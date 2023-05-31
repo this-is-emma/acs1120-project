@@ -1,52 +1,55 @@
 import random
+import numpy
 from collections import Counter
 import re
+import sys
 
-# dictionary_words = []
-
-# # read in the words
-# with open('/usr/share/dict/words') as f:
-#     for line in f:
-#         dictionary_words = f.read().splitlines()
-
-# # pick random words
-# def pick_random_words(length):
-#     words = random.sample(dictionary_words, length)
-#     sentence = ' '.join(words)
-#     return sentence
-#print(pick_random_words(5))
-#filename = 'test_text.txt'
-
-
-def histogram(filename):
+def create_histogram(filename):
     with open(filename) as file:
         words = file.read().splitlines()
         # Remove '; , .' 
-        sanitized_text = re.sub(r"[^a-zA-Z0-9 ]", "", ' '.join(words))
+        sanitized_text = re.sub(r"[^a-zA-Z0-9- ]", "", ' '.join(words))
 
     # Added .lower() so that 'The' is the same as 'The' and both count for 'the'
     histogram = dict(Counter((sanitized_text.lower()).split()))  
     return histogram
 
-def unique_words(histogram):
+# ! refactor below - must be a more efficient way to calculate entries of a dict -_- 
+def calculate_unique_words(histogram):
     total = 0
-    for count in histogram.values():
-        if count < 2:
-          total += 1
+    for word in histogram.keys():
+        total += 1
     return total
 
-def frequency(word, histogram):
+def calculate_frequency(word, histogram):
     for entry, frequency in histogram.items():
         if entry == word:
             return frequency 
 
+def pick_a_word(histogram, length):
+    # 👇 equal weights
+    # word = random.sample(list(histogram), length)
+    # return word
 
-# new_histogram = histogram('../source_text.txt')
-# total_unique_words = unique_words(new_histogram)
+    # 👇 different weights
+    # total_unique_words = calculate_unique_words(histogram)
+    total_words = 0
 
-# print(new_histogram)
-# print('total unique words: ', total_unique_words)
-# print('Occurrence of the word THE is: ', frequency('the', new_histogram))
+    # Get total words (NOT unique words)
+    for frequency in histogram.values():
+        total_words += frequency
 
+    for word, frequency in histogram.items():
+        histogram[word] = frequency/total_words
 
+    selection = numpy.random.choice(list(histogram.keys()), length, list(histogram.values()))
+    
+    return selection
+
+corpus = sys.argv[1]
+
+new_histogram = create_histogram(corpus)
+random_word = pick_a_word(new_histogram, 1)
+
+print(random_word)
 
