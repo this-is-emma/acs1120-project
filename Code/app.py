@@ -1,6 +1,6 @@
 """Main script, uses other modules to generate sentences."""
 from flask import Flask
-
+import dictionary_words
 
 app = Flask(__name__)
 
@@ -11,8 +11,8 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
-    return "<p>TODO: Return a word here!</p>"
-
+    return dictionary_words.random_words
+    
 
 if __name__ == "__main__":
     """To run the Flask server, execute `python app.py` in your terminal.

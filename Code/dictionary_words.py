@@ -7,10 +7,10 @@ import sys
 def create_histogram(filename):
     with open(filename) as file:
         words = file.read().splitlines()
-        # Remove '; , .' 
+        # Remove special char => '; , .' 
         sanitized_text = re.sub(r"[^a-zA-Z0-9- ]", "", ' '.join(words))
-
-    # Added .lower() so that 'The' is the same as 'The' and both count for 'the'
+         
+    # 💡 - Counter (subclass of dict) goes through a list and return items and their frequency as a dict. 
     histogram = dict(Counter((sanitized_text.lower()).split()))  
     return histogram
 
@@ -42,14 +42,12 @@ def pick_a_word(histogram, length):
     for word, frequency in histogram.items():
         histogram[word] = frequency/total_words
 
-    selection = numpy.random.choice(list(histogram.keys()), length, list(histogram.values()))
-    
+    selection = numpy.random.choice(list(histogram.keys()), length, p=list(histogram.values()))
     return selection
 
 corpus = sys.argv[1]
 
 new_histogram = create_histogram(corpus)
-random_word = pick_a_word(new_histogram, 1)
+random_words = ' '.join(pick_a_word(new_histogram, 5))
 
-print(random_word)
 
