@@ -5,6 +5,7 @@ import dictionary_words
 app = Flask(__name__)
 
 # TODO: Initialize your histogram, hash table, or markov chain here.
+#! - source venv/bin/activate
 # Any code placed here will run only once, when the server starts.
 
 

@@ -38,3 +38,5 @@ If you have any questions, suggestions, or issues, feel free to contact me.
 ---
 
 Thank you for using the Tweet Generator! We hope you find it useful. If you have any feedback or improvements, we'd love to hear from you. Happy tweeting!
+
+Based on instruction from this [repo](https://tech-at-du.github.io/Tweet-Generator/#/)

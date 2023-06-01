@@ -9,7 +9,7 @@ def create_histogram(filename):
         words = file.read().splitlines()
         # Remove special char => '; , .' 
         sanitized_text = re.sub(r"[^a-zA-Z0-9- ]", "", ' '.join(words))
-         
+
     # 💡 - Counter (subclass of dict) goes through a list and return items and their frequency as a dict. 
     histogram = dict(Counter((sanitized_text.lower()).split()))  
     return histogram
@@ -51,3 +51,4 @@ new_histogram = create_histogram(corpus)
 random_words = ' '.join(pick_a_word(new_histogram, 5))
 
 
+#! - source venv/bin/activate
