@@ -29,9 +29,6 @@ class Dictogram(dict):
             for word in word_list:
                 self.add_count(word)
 
-    def __str__(self):
-        return str(self.histogram)
-
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
@@ -56,6 +53,13 @@ class Dictogram(dict):
 
         selection = random.choices(unique_words, weights)
         return selection
+
+    def __str__(self):
+        return str(self.histogram)
+
+    def __len__(self):
+        return len(self.histogram)
+
 
 def print_histogram(word_list):
     print()
