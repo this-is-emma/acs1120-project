@@ -3,8 +3,6 @@
 from __future__ import division, print_function  # Python 2 and 3 compatibility
 from collections import Counter
 import random
-import re
-import numpy as np
 
 def is_list_of_lists(obj):
     return isinstance(obj, list) and all(isinstance(sublist, list) for sublist in obj)
