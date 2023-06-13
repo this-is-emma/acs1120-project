@@ -1,36 +1,63 @@
 #!python
 
 from __future__ import division, print_function  # Python 2 and 3 compatibility
+from collections import Counter
 import random
+import re
+import numpy as np
 
+def is_list_of_lists(obj):
+    return isinstance(obj, list) and all(isinstance(sublist, list) for sublist in obj)
 
 class Dictogram(dict):
     """Dictogram is a histogram implemented as a subclass of the dict type."""
-
     def __init__(self, word_list=None):
         """Initialize this histogram as a new dict and count given words."""
         super(Dictogram, self).__init__()  # Initialize this as a new dict
         # Add properties to track useful word counts for this histogram
-        self.types = 0  # Count of distinct word types in this histogram
-        self.tokens = 0  # Total count of all word tokens in this histogram
+
+        if is_list_of_lists(word_list):
+            flat_list = [item for sublist in word_list for item in sublist]
+            self.sanitized_text = flat_list
+        else:
+            self.sanitized_text = word_list
+
+        self.histogram = dict(Counter((self.sanitized_text)))
+        self.types = len(list(self.histogram.keys()))  # Count of distinct word types in this histogram
+        self.tokens = len(self.sanitized_text)  # Total count of all word tokens in this histogram
+
         # Count words in given list, if any
         if word_list is not None:
             for word in word_list:
                 self.add_count(word)
 
+    def __str__(self):
+        return str(self.histogram)
+
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
+        corpus = self.sanitized_text
+        list(corpus).count(word)
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
         # TODO: Retrieve word frequency count
+        corpus = self.sanitized_text
+        return list(corpus).count(word)
 
     def sample(self):
         """Return a word from this histogram, randomly sampled by weighting
         each word's probability of being chosen by its observed frequency."""
         # TODO: Randomly choose a word based on its frequency in this histogram
+        weights = []
+        unique_words = []
+        for words, frequency in self.histogram.items():
+            unique_words.append(words)
+            weights.append(frequency/self.tokens)
 
+        selection = random.choices(unique_words, weights)
+        return selection
 
 def print_histogram(word_list):
     print()
@@ -87,11 +114,13 @@ def main():
     import sys
     arguments = sys.argv[1:]  # Exclude script name in first argument
     if len(arguments) >= 1:
+        print('Length of args are: ', len(arguments))
         # Test histogram on given arguments
         print_histogram(arguments)
     else:
         # Test histogram on letters in a word
         word = 'abracadabra'
+        print('WORD IS ',word)
         print_histogram(list(word))
         # Test histogram on words in a classic book title
         fish_text = 'one fish two fish red fish blue fish'
