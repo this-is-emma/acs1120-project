@@ -1,15 +1,21 @@
 from dictogram import Dictogram
 
-text = "SOME TESTsgjkbsk sfksdf testf afajh"
-
-text_str = [['asa'], ['adfd']]
 
 text_list = ['fgh','yes', 'box']
 dictogram = Dictogram(text_list)
-print(dictogram)
-print(len(dictogram))
 
-new_dict = dict(dictogram)
-print(type(new_dict))
-print(new_dict.keys())
+print(dictogram.get('peace', 0))
 
+# dictogram.add_count('love', 2)
+# print(dictogram.frequency('love'))
+# print(dictogram)
+# print(list(dictogram.keys()))
+# print(dictogram.tokens)
+# print(dictogram.types)
+# print(dictogram.sample())
+
+# word = ['a']
+
+# print(word)
+# word = ' '.join(word)
+# print(word)
