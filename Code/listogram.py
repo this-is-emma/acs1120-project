@@ -3,6 +3,8 @@
 from __future__ import division, print_function  # Python 2 and 3 compatibility
 import random
 
+def is_list_of_lists(obj):
+    return isinstance(obj, list) and all(isinstance(sublist, list) for sublist in obj)
 
 class Listogram(list):
     """Listogram is a histogram implemented as a subclass of the list type."""
@@ -15,6 +17,8 @@ class Listogram(list):
         self.tokens = 0  # Total count of all word tokens in this histogram
         # Count words in given list, if any
         if word_list is not None:
+            if is_list_of_lists(word_list):
+                word_list = [item for sublist in word_list for item in sublist]
             for word in word_list:
                 self.add_count(word)
 

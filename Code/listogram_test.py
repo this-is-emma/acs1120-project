@@ -11,7 +11,7 @@ class ListogramTest(unittest.TestCase):
 
     # Test fixtures: known inputs and their expected results
     fish_words = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
-    fish_list = [('one', 1), ('fish', 4), ('two', 1), ('red', 1), ('blue', 1)]
+    fish_list = [['one', 1], ['fish', 4], ['two', 1], ['red', 1], ['blue', 1]]
     fish_dict = {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}
 
     def test_entries(self):
@@ -29,8 +29,8 @@ class ListogramTest(unittest.TestCase):
 
     def test_contains(self):
         histogram = Listogram(self.fish_words)
+        # histogram = [('one', 1), ('fish', 4), ('two', 1), ('red', 1), ('blue', 1)]
         # All of these words should be found
-        print('TEST - print histogram: ', histogram)
         for word in self.fish_words:
             assert word in histogram
         # None of these words should be found
