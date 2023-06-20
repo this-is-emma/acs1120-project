@@ -1,6 +1,7 @@
 """Main script, uses other modules to generate sentences."""
 from flask import Flask
 import dictionary_words
+import markov_chain
 
 app = Flask(__name__)
 
@@ -12,8 +13,9 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
-    return dictionary_words.random_words
-    
+    # return dictionary_words.random_words
+    return markov_chain.sentence
+
 
 if __name__ == "__main__":
     """To run the Flask server, execute `python app.py` in your terminal.
