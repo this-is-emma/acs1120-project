@@ -87,6 +87,7 @@ class LinkedList:
         else:
             new_node.next = None
             self.head = new_node
+            self.tail = new_node
 
     def find(self, matcher):
         """Return an item from this linked list if it is present.
@@ -110,23 +111,65 @@ class LinkedList:
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
-        #current_node = None
+        # current_node = None
         match_found = False
-        previous_node = None
-        next_node = None
-        node = self.head
-        while node is not None:
-            next_node = node.next
-            if item == node.data:
-                match_found = True
-                if self.head == node:
-                    self.head = node.next
-                else:
-                    previous_node.next = next_node
-            previous_node = node
-            node = node.next
-        if match_found == False:
+        # next_node = None
+        # node = self.head
+        # previous_node = node
+        # while node is not None:
+        #     next_node = node.next
+        #     # print('Node is not empty! Currently contains: ', node.data)
+        #     if item == node.data:
+        #         # print(f'There is a match! item {item} matches {node.data}')
+        #         match_found = True
+        #         if self.head == node:
+        #             previous_node = None
+        #             self.head = node.next
+        #             break
+        #         elif self.tail == node:
+        #             print(f'the node was the TAIL!')
+        #             print('next node is: ',next_node)
+        #             print('previous node is: ', previous_node)
+        #             # previous_node.next = next_node
+        #             self.tail = previous_node
+        #             self.tail.next = None
+        #             print('ll tail is now: ', self.tail)
+        #             break
+        #         else:
+        #             # print(f'the node WASNT the head - unlinking current node {node.data}, taking previous node {previous_node.next.data} to point towards {node.next.data}')
+        #             previous_node.next = next_node
+        #             print('self is now: ', self)
+        #             print("tail is: ",self.tail.data)
+        #             break
+
+        #     previous_node = node
+        #     node = node.next
+        # if match_found == False:
+        #     raise ValueError('Item not found: {}'.format(item))
+        if self.head is None:
             raise ValueError('Item not found: {}'.format(item))
+
+        # If the key to be deleted is in the head node
+        if self.head.data == item:
+            if self.head == self.tail:
+                self.tail = None
+            self.head = self.head.next
+            return
+
+        current = self.head
+        prev = None
+        while current is not None and current.data != item:
+            prev = current
+            current = current.next
+
+        if current is None:
+            raise ValueError('Item not found: {}'.format(item))
+
+        # If the key to be deleted is in the last node
+        if current == self.tail:
+            self.tail = prev
+
+        prev.next = current.next
 
 
 def test_linked_list():
