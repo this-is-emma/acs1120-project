@@ -16,7 +16,6 @@ corpus = sys.argv[1]
 clean_corpus = clean_text(corpus)
 def create_markov_model(clean_text, n_gram=1):
     markov_model={}
-    # print(f"Clean text is: {clean_text}, Length is {len(clean_text)}")
     for i in range(len(clean_text) - n_gram - 1):
         curr_state, next_state = "", ""
         for j in range(n_gram):
@@ -37,17 +36,18 @@ def create_markov_model(clean_text, n_gram=1):
         total = sum(transition.values())
         for state, count in transition.items():
             markov_model[curr_state][state] = count/total
-
+        # print('Markov model is: ', markov_model)
         return markov_model
 
-def generate_story(markov_model, limit=5, start='a'):
+# start = random.choice(['what','why','when'])
+
+def generate_story(markov_model, start, limit = 8):
     n=0
     curr_state = start
     next_state = None
     story = ""
     story += curr_state + " "
     while n < limit:
-        # print('Weights are: ',list(markov_model[curr_state].values()))
         next_state = random.choices(list(markov_model[curr_state].keys()), list(markov_model[curr_state].values()))
         curr_state = next_state[0]
         story += curr_state + " "
@@ -55,9 +55,8 @@ def generate_story(markov_model, limit=5, start='a'):
 
     return story
 
-mkv_model = create_markov_model(clean_corpus)
-# print('markov model is: ', mkv_model)
-sentence = generate_story(mkv_model)
+# mkv_model = create_markov_model(clean_corpus)
+# # sentence = generate_story(mkv_model, start = random.choice(['what','why','when']))
 
 
 

@@ -42,17 +42,13 @@ def pick_a_word(histogram, length):
     for word, frequency in histogram.items():
         histogram[word] = frequency/total_words
 
-    print(histogram)
-
     selection = numpy.random.choice(list(histogram.keys()), length, p=list(histogram.values()))
     return selection
 
 corpus = sys.argv[1]
 
 new_histogram = create_histogram(corpus)
-
-# print(new_histogram)
 random_words = ' '.join(pick_a_word(new_histogram, 2))
-print(random_words)
+
 
 #! - source venv/bin/activate

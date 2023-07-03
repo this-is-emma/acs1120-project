@@ -1,20 +1,41 @@
 """Main script, uses other modules to generate sentences."""
-from flask import Flask
+import random
+from flask import Flask, render_template, request
 import dictionary_words
-import markov_chain
+import sys
+from markov_chain import generate_story, create_markov_model, clean_text
 
 app = Flask(__name__)
 
 # TODO: Initialize your histogram, hash table, or markov chain here.
 #! - source venv/bin/activate
 # Any code placed here will run only once, when the server starts.
-
+corpus = sys.argv[1]
+clean_corpus = clean_text(corpus)
+mkv_model = create_markov_model(clean_corpus)
 
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
     # return dictionary_words.random_words
-    return markov_chain.sentence
+    sentence = generate_story(
+        mkv_model,
+        limit = 9,
+        start = random.choice([
+            'what',
+            'why',
+            'when',
+            'who',
+            'whats',
+            'reddit',
+            'your',
+            'how',
+            'if',
+            'which',
+            'for',
+            'people',
+        ])) + "?"
+    return render_template('index.html', sentence = sentence)
 
 
 if __name__ == "__main__":
