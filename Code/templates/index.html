@@ -8,12 +8,18 @@
   <title>99 questions</title>
 </head>
 <body>
-    <blockquote> {{sentence}}</blockquote>
+  <header>
+    <p>Nemo is a bot with existential questions. Follow her on Twitter at <a href="https://twitter.com/nemo_asks">nemo_asks</a></p>
+  </header>
+  <div id="question">
+    <h1 id="title">Nemo Asks</h1>
+    <p> {{sentence}}</p>
     <div>
       <form action="/tweet" method="post">
         <input type="hidden" name="sentence" value="{{ sentence }}">
         <button class="button" type="submit">Tweet this</button>
       </form>
     </div>
+  </div>
 </body>
 </html>

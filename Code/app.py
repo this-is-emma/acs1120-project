@@ -21,7 +21,7 @@ def home():
     # return dictionary_words.random_words
     sentence = generate_story(
         mkv_model,
-        limit = 9,
+        limit = 6,
         start = random.choice([
             'what',
             'why',
@@ -29,12 +29,9 @@ def home():
             'who',
             'whats',
             'reddit',
-            'your',
             'how',
             'if',
             'which',
-            'for',
-            'people',
         ])) + "?"
     return render_template('index.html', sentence = sentence)
 

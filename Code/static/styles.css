@@ -1,7 +1,7 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100vh;
   font-size: 24px;
@@ -11,9 +11,24 @@ body {
   background-position: 100% 100%;
 }
 
-blockquote::first-letter {
-  text-transform: uppercase;
+header {
+  background-color: #1DA1F2;
+  color: white;
+  width: 100%;
+  margin: -1;
+  text-align: center;
 }
+
+header a {
+  text-decoration: none;
+  color: rgb(2, 2, 100);
+  font-weight: bold;
+}
+
+#question{
+  margin-bottom: 18rem;
+}
+
 
 .button {
   display: inline-block;
