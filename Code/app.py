@@ -1,7 +1,7 @@
 """Main script, uses other modules to generate sentences."""
 import random
 from flask import Flask, render_template, request
-import dictionary_words
+
 import sys
 from markov_chain import generate_story, create_markov_model, clean_text
 
@@ -10,8 +10,8 @@ app = Flask(__name__)
 # TODO: Initialize your histogram, hash table, or markov chain here.
 #! - source venv/bin/activate
 # Any code placed here will run only once, when the server starts.
-corpus = sys.argv[1]
-clean_corpus = clean_text(corpus)
+# corpus = sys.argv[1]
+clean_corpus = clean_text('questions.txt')
 mkv_model = create_markov_model(clean_corpus)
 
 @app.route("/")

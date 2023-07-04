@@ -11,9 +11,9 @@ def clean_text(filename):
         sanitized_text = re.sub(r"[^a-zA-Z0-9- ]", "", ' '.join(words))
         return (sanitized_text.lower()).split()
 
-corpus = sys.argv[1]
+# corpus = sys.argv[1]
 
-clean_corpus = clean_text(corpus)
+clean_corpus = clean_text('questions.txt')
 def create_markov_model(clean_text, n_gram=1):
     markov_model={}
     for i in range(len(clean_text) - n_gram - 1):
