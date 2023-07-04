@@ -1,9 +1,15 @@
-from dictogram import Dictogram
-from listogram import Listogram
-
-text_list = ['a', 'b', 'r', 'a', 'c', 'a', 'd', 'a', 'b', 'r', 'a']
-listogram = Listogram(text_list)
+from hashtable import HashTable
 
 
-print(listogram.sample())
+ht = HashTable()
+ht.set('I', 1)
+ht.set('V', 4)
+ht.set('X', 9)
+
+print('ht before: ',ht)
+
+ht.set('V', 5)
+
+print('ht after updating V: ',ht)
+# ht.set('X', 10)
 
