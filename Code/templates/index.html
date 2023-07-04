@@ -9,5 +9,11 @@
 </head>
 <body>
     <blockquote> {{sentence}}</blockquote>
+    <div>
+      <form action="/tweet" method="post">
+        <input type="hidden" name="sentence" value="{{ sentence }}">
+        <button class="button" type="submit">Tweet this</button>
+      </form>
+    </div>
 </body>
 </html>
