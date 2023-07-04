@@ -1,6 +1,7 @@
 """Main script, uses other modules to generate sentences."""
 import random
-from flask import Flask, render_template, request
+import twitter
+from flask import Flask, render_template, request, redirect
 
 import sys
 from markov_chain import generate_story, create_markov_model, clean_text
@@ -37,6 +38,11 @@ def home():
         ])) + "?"
     return render_template('index.html', sentence = sentence)
 
+@app.route('/tweet', methods=['POST'])
+def tweet():
+    status = request.form['sentence']
+    twitter.tweet(status)
+    return redirect('/')
 
 if __name__ == "__main__":
     """To run the Flask server, execute `python app.py` in your terminal.
