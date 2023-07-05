@@ -36,7 +36,6 @@ def create_markov_model(clean_text, n_gram=1):
         total = sum(transition.values())
         for state, count in transition.items():
             markov_model[curr_state][state] = count/total
-        # print('Markov model is: ', markov_model)
         return markov_model
 
 # start = random.choice(['what','why','when'])
