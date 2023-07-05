@@ -62,4 +62,24 @@ header a {
   vertical-align: middle;
 }
 
+@media (max-width: 500px) {
 
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    background-image: url("girl.gif");
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: 100% 100%;
+  }
+
+  #question{
+    margin-bottom: 18rem;
+    padding: 2rem;
+  }
+}
