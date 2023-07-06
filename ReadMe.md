@@ -1,6 +1,9 @@
 # Nemo Asks.
 
-Welcome to the Nemo Asks repository! This application generates random tweets based on a given set of input data. It utilizes natural language processing techniques such as Markov Chains to create original content. 
+Welcome to the __Nemo Asks__ repository! Nemo is a little bot with existential questions.
+
+This application explores __natural language processing__ techniques such as 2nd order Markov Chains to generate content, in this case __questions__🧐. 
+The corpus used to generate the questions is [The book of questions](https://hellomalavika.com/wp-content/uploads/2017/09/ef922-thebookofquestions.pdf) which, as the authors describe it, is a book containing __"...questions about you, your values, your beliefs, and your life. (...) These questions can be an avenue for individual growth, a tool for deepening relationships, a quick way to get to know a stranger, or merely a pleasant amusement."__
 
 
 Please feel free to visit the [Nemo asks website](https://its-99-questions.onrender.com/)! She is still learning to form intelligible questions; sometimes her thougths dont make any sens but sometimes it actually does! When it happens, tweet it for posterity 🥳 
