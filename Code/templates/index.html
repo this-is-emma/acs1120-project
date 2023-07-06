@@ -13,11 +13,14 @@
   </header>
   <div id="question">
     <h1 id="title">Nemo Asks</h1>
-    <p> {{sentence}}</p>
+    <p id="the-question"> {{sentence}}</p>
     <div>
       <form action="/tweet" method="post">
         <input type="hidden" name="sentence" value="{{ sentence }}">
-        <button class="button" type="submit">Tweet this</button>
+        <div>
+          <button class="button" type="submit">Tweet this</button>
+          <button class="reload-btn">new question</button>
+        </div>
       </form>
     </div>
   </div>

@@ -23,15 +23,13 @@ def home():
         mkv_model,
         limit = 6,
         start = random.choice([
-            'what',
-            'why',
-            'when',
-            'who',
-            'whats',
-            'reddit',
-            'how',
-            'if',
-            'which',
+            'would you',
+            'you know',
+            'you are',
+            'when did',
+            'if you',
+            'do you',
+            'is it',
         ])) + "?"
     return render_template('index.html', sentence = sentence)
 
