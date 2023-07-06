@@ -29,6 +29,10 @@ header a {
   margin-bottom: 18rem;
 }
 
+#the-question::first-letter{
+  text-transform: uppercase;
+}
+
 
 .button {
   display: inline-block;
@@ -60,6 +64,33 @@ header a {
 .button .text {
   display: inline-block;
   vertical-align: middle;
+}
+
+/* Button Styles */
+.reload-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 20px; /* Rounded border radius */
+  border: none;
+  color: #ffffff;
+  background-color: #808080; /* Grey background color */
+  cursor: pointer;
+}
+
+/* Reload Icon Styles */
+.reload-btn::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 5px;
+}
+
+/* Hover Effect */
+.reload-btn:hover {
+  background-color: #6c6c6c; /* Darker grey hover background color */
 }
 
 @media (max-width: 500px) {

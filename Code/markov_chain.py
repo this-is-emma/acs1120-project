@@ -14,7 +14,7 @@ def clean_text(filename):
 # corpus = sys.argv[1]
 
 clean_corpus = clean_text('questions.txt')
-def create_markov_model(clean_text, n_gram=1):
+def create_markov_model(clean_text, n_gram=2):
     markov_model={}
     for i in range(len(clean_text) - n_gram - 1):
         curr_state, next_state = "", ""
