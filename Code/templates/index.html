@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../static/styles.css">
   <title>99 questions</title>
+  <script>
+    function reload() {
+      location.reload();
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -19,7 +24,7 @@
         <input type="hidden" name="sentence" value="{{ sentence }}">
         <div>
           <button class="button" type="submit">Tweet this</button>
-          <button class="reload-btn">new question</button>
+          <button class="reload-btn" onclick="reload()">new question</button>
         </div>
       </form>
     </div>
